@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DefaultController!{% endblock %}
+
+{% block body %}
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>Code</th>
+            <th>Libelle</th>
+            <th>Couleur</th>
+            <th>Taille</th>
+            <th>Prix</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for produit in produits %}
+            <tr>
+                <td>{{ produit.code }}</td>
+                <td>{{ produit.libelle }}</td>
+                <td>{{ produit.couleur }}</td>
+                <td>{{ produit.taille }}</td>
+                <td>{{ produit.prix|number_format(2) }} €</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+    <div>
+        <a href="{{ path('produit_index') }}">Gérer les produits</a> |
+        <a href="{{ path('fournisseur_index') }}">Gérer les fournisseurs</a>
+    </div>
+{% endblock %}
