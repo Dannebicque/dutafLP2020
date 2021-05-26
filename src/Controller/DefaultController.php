@@ -10,9 +10,19 @@ use Symfony\Component\Routing\Annotation\Route;
 class DefaultController extends AbstractController
 {
     /**
-     * @Route("/", name="default")
+     * @Route("/", name="default_homepage")
      */
-    public function index(ProduitRepository $produitRepository): Response
+    public function index(): Response
+    {
+        return $this->render('default/homepage.html.twig', [
+        
+        ]);
+    }
+
+    /**
+     * @Route("/default", name="default")
+     */
+    public function default(ProduitRepository $produitRepository): Response
     {
         return $this->render('default/index.html.twig', [
             'produits' => $produitRepository->findAll(),
